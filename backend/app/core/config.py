@@ -2,6 +2,7 @@ from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
+    """Application configuration loaded from environment variables."""
     PROJECT_NAME: str = "ContextLink SDK"
 
     API_VERSION: str = "v1"
@@ -17,6 +18,7 @@ class Settings(BaseSettings):
     SECRET_KEY: str
 
     class Config:
+        """Configure Pydantic settings sources."""
         env_file = ".env"
 
 

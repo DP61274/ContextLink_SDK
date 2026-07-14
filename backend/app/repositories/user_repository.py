@@ -8,13 +8,14 @@ from app.models.user import User
 
 
 class UserRepository:
+    """Database access operations for users."""
 
     def create(
         self,
         session: Session,
         user: User
     ) -> User:
-
+        """Persist a new user and return its refreshed record."""
         session.add(user)
 
         session.commit()
@@ -28,7 +29,7 @@ class UserRepository:
         session: Session,
         user_id: UUID
     ) -> Optional[User]:
-
+        """Return a user by ID, if it exists."""
         return session.get(User, user_id)
 
     def get_by_phone(
@@ -36,7 +37,7 @@ class UserRepository:
         session: Session,
         phone: str
     ) -> Optional[User]:
-
+        """Return a user by phone number, if it exists."""
         statement = (
             select(User)
             .where(User.phone_number == phone)
@@ -45,6 +46,7 @@ class UserRepository:
         return session.exec(statement).first()
 
     def update(self, session: Session, user: User) -> User:
+        """Persist changes to an existing user."""
         user.updated_at = datetime.utcnow()
         session.add(user)
         session.commit()
@@ -55,7 +57,7 @@ class UserRepository:
         self,
         session: Session
     ) -> list[User]:
-
+        """Return all users."""
         return session.exec(
             select(User)
         ).all()

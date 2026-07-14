@@ -11,6 +11,7 @@ from .base import BaseModel
 
 
 class IntentType(str, Enum):
+    """Social connection intents a user may select."""
 
     NETWORKING = "Networking"
 
@@ -22,6 +23,7 @@ class IntentType(str, Enum):
 
 
 class Intent(BaseModel, table=True):
+    """The current connection intent selected by a user."""
 
     user_id: UUID = Field(
         foreign_key="user.id",

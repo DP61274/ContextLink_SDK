@@ -6,6 +6,7 @@ from .base import BaseModel
 
 
 class User(BaseModel, table=True):
+    """A registered ContextLink user."""
 
     phone_number: str = Field(index=True, unique=True)
 

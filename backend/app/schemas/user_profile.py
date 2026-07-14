@@ -1,27 +1,30 @@
 from uuid import UUID
-from typing import Optional
-
 from pydantic import BaseModel
 
 
 class ProfileCreate(BaseModel):
-    profession: Optional[str] = None
-    bio: Optional[str] = None
-    languages: Optional[str] = None
-    interests: Optional[str] = None
+    """Payload for creating a user profile."""
+
+    profession: str | None = None
+    bio: str | None = None
+    languages: str | None = None
+    interests: str | None = None
 
 
 class ProfileRead(BaseModel):
+    """Public representation of a user profile."""
     id: UUID
     user_id: UUID
-    profession: Optional[str]
-    bio: Optional[str]
-    languages: Optional[str]
-    interests: Optional[str]
+    profession: str | None
+    bio: str | None
+    languages: str | None
+    interests: str | None
 
 
 class ProfileUpdate(BaseModel):
-    profession: Optional[str] = None
-    bio: Optional[str] = None
-    languages: Optional[str] = None
-    interests: Optional[str] = None
+    """Payload for updating a user profile."""
+
+    profession: str | None = None
+    bio: str | None = None
+    languages: str | None = None
+    interests: str | None = None

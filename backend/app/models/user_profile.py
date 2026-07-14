@@ -9,6 +9,7 @@ from .base import BaseModel
 
 
 class UserProfile(BaseModel, table=True):
+    """Optional profile information belonging to one user."""
 
     user_id: UUID = Field(
         foreign_key="user.id",

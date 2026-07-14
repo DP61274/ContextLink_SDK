@@ -9,6 +9,7 @@ from .base import BaseModel
 
 
 class TrustScore(BaseModel, table=True):
+    """Trust and verification signals associated with one user."""
 
     user_id: UUID = Field(
         foreign_key="user.id",

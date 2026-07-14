@@ -5,6 +5,7 @@ from sqlmodel import SQLModel, Field
 
 
 class BaseModel(SQLModel):
+    """Shared identifier and timestamp fields for persistent models."""
     id: UUID = Field(
         default_factory=uuid4,
         primary_key=True,
