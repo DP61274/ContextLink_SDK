@@ -1,9 +1,12 @@
 from sqlmodel import SQLModel, create_engine
 
-from app.core.config import settings
+# Import all implemented SQLModel tables before create_all() runs.
+from app.models.user import User
+from app.models.user_profile import UserProfile
+from app.models.intent import Intent
+from app.models.trust_score import TrustScore
 
-# Add this temporary print line right here:
-print(f"--- DEBUG: DATABASE_URL is: '{settings.DATABASE_URL}' ---")
+from app.core.config import settings
 
 engine = create_engine(
     settings.DATABASE_URL,
