@@ -21,3 +21,7 @@ class User(BaseModel, table=True):
     intent: Optional["Intent"] = Relationship(back_populates="user")
 
     trust_score: Optional["TrustScore"] = Relationship(back_populates="user")
+
+    journey_participations: list["JourneyParticipant"] = Relationship(
+        back_populates="user"
+    )

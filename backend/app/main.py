@@ -2,6 +2,7 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 
+from app.api.journeys import router as journeys_router
 from app.api.users import router as users_router
 from app.core.config import settings
 from app.database.database import create_db
@@ -20,6 +21,7 @@ app = FastAPI(
     lifespan=lifespan,
 )
 app.include_router(users_router)
+app.include_router(journeys_router)
 
 
 @app.get("/")
